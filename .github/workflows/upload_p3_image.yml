@@ -1,11 +1,11 @@
-name: upload-p1-image
+name: upload-p3-image
 
 on:
   push:
     branches:
       - master
     paths:
-      - "p1/**"
+      - "p3/**"
 
 jobs:
   upload:
@@ -15,12 +15,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and push P1 Docker image
+      - name: Build and push P3 Docker image
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
-          repository: eecs485/p1
+          repository: eecs485/p3
           tags: latest
-          path: "p1"
-          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest,eecs485/p1:latest
+          path: "p3"
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest,eecs485/p3:latest

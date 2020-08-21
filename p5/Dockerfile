@@ -1,3 +1,4 @@
+# Build project 5 image
 FROM eecs485/ag_base:latest
 
 RUN apt-get install -y unzip

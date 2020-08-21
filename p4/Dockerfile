@@ -1,3 +1,4 @@
+# Build project 4 image
 FROM eecs485/ag_base:latest
 
 USER autograder:autograder
