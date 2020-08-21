@@ -1,0 +1,181 @@
+# Upload Docker images when appropriate:
+name: upload-ag-images
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "base/**"
+
+jobs:
+  upload-base:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Analyze file changes
+        uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**/*'
+
+      - name: Build and push base Docker image
+        if: steps.filter.outputs.base == 'true'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
+          repository: eecs485/ag_base
+          tags: latest
+          path: "base"
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest
+
+  upload-p1:
+    needs: upload-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Analyze file changes
+        uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**/*'
+            p1:
+              - 'p1/**/*'
+
+      - name: Build and push p1 Docker image
+        if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p1 == 'true'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
+          repository: eecs485/p1
+          tags: latest
+          path: "p1"
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest,eecs485/p1:latest
+
+  upload-p2:
+    needs: upload-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Analyze file changes
+        uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**/*'
+            p2:
+              - 'p2/**/*'
+
+      - name: Build and push p2 Docker image
+        if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p2 == 'true'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
+          repository: eecs485/p2
+          tags: latest
+          path: "p2"
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest,eecs485/p2:latest
+
+  upload-p3:
+    needs: upload-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Analyze file changes
+        uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**/*'
+            p3:
+              - 'p3/**/*'
+
+      - name: Build and push p3 Docker image
+        if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p3 == 'true'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
+          repository: eecs485/p3
+          tags: latest
+          path: "p3"
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest,eecs485/p3:latest
+
+  upload-p4:
+    needs: upload-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Analyze file changes
+        uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**/*'
+            p4:
+              - 'p4/**/*'
+
+      - name: Build and push p4 Docker image
+        if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p4 == 'true'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
+          repository: eecs485/p4
+          tags: latest
+          path: "p4"
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest,eecs485/p4:latest
+
+  upload-p5:
+    needs: upload-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Analyze file changes
+        uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**/*'
+            p5:
+              - 'p5/**/*'
+
+      - name: Build and push p5 Docker image
+        if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p5 == 'true'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
+          repository: eecs485/p5
+          tags: latest
+          path: "p5"
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest,eecs485/p5:latest
