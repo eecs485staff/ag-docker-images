@@ -2,6 +2,8 @@ name: upload-base-image
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "base/**"
 
