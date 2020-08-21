@@ -1,0 +1,26 @@
+name: upload-base-image
+
+on:
+  pull_request:
+    paths:
+      - "base/**"
+  push:
+    paths:
+      - "base/**"
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
+          repository: eecs485/test-automation
+          tags: latest
+          path: "base"
