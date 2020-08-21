@@ -1,6 +1,5 @@
 FROM eecsautograder/ubuntu18:latest
 
-
 RUN apt-get update
 RUN apt-get install -y software-properties-common python3-software-properties
 
