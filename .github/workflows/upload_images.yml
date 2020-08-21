@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Determine if rebuild is necessary
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v2.2.1
         id: filter
         with:
           filters: |
@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Determine if rebuild is necessary
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v2.2.1
         id: filter
         with:
           filters: |
@@ -73,7 +73,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Determine if rebuild is necessary
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v2.2.1
         id: filter
         with:
           filters: |
@@ -103,7 +103,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Determine if rebuild is necessary
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v2.2.1
         id: filter
         with:
           filters: |
@@ -133,7 +133,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Determine if rebuild is necessary
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v2.2.1
         id: filter
         with:
           filters: |
@@ -163,7 +163,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Determine if rebuild is necessary
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v2.2.1
         id: filter
         with:
           filters: |
