@@ -1,12 +1,10 @@
-# Upload Docker images when appropriate:
+# Upload Docker images when either the base or individual project images change
 name: upload-ag-images
 
 on:
   push:
     branches:
       - master
-    paths:
-      - "base/**"
 
 jobs:
   upload-base:
