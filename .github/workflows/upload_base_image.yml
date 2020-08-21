@@ -1,10 +1,9 @@
 name: upload-base-image
 
 on:
-  pull_request:
-    paths:
-      - "base/**"
   push:
+    branches:
+      - master
     paths:
       - "base/**"
 
