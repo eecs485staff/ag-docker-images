@@ -20,6 +20,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PERSONAL_ACCESS_TOKEN }}
-          repository: eecs485/test-automation
+          repository: eecs485/ag_base
           tags: latest
           path: "base"
+          cache_froms: eecs485/ag_base:latest,eecsautograder/ubuntu18:latest

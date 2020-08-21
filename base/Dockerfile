@@ -1,3 +1,4 @@
+# Base image for all EECS 485 project images
 FROM eecsautograder/ubuntu18:latest
 
 RUN apt-get update
