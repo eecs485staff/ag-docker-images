@@ -23,4 +23,4 @@ jobs:
           repository: eecs485/ag_base
           tags: latest
           path: "base"
-          cache_froms: eecs485/ag_base:latest,eecsautograder/ubuntu18:latest
+          cache_froms: eecsautograder/ubuntu18:latest,eecs485/ag_base:latest
