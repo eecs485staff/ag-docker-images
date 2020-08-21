@@ -1,4 +1,4 @@
-# Build base image for all EECS 485 projects
+# Build base image
 FROM eecsautograder/ubuntu18:latest
 
 # Install and configure build tools
