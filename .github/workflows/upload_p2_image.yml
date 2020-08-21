@@ -5,6 +5,7 @@ on:
     branches:
       - master
     paths:
+      - "base/**"
       - "p2/**"
 
 jobs:

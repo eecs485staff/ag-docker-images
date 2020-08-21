@@ -1,6 +1,7 @@
 # Build project 4 image
 FROM eecs485/ag_base:latest
 
+RUN apt-get install -y netcat
 USER autograder:autograder
 COPY requirements-485-p4.txt .
 RUN $PYTHON -m venv env-p4
