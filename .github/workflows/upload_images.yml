@@ -14,14 +14,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Analyze file changes
-        uses: dorny/paths-filter@v2.2.1
+      - name: Determine if rebuild is necessary
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
             base:
               - 'base/**/*'
 
+      # Only rebuild if base image has changed
       - name: Build and push base Docker image
         if: steps.filter.outputs.base == 'true'
         uses: docker/build-push-action@v1
@@ -41,8 +42,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Analyze file changes
-        uses: dorny/paths-filter@v2.2.1
+      - name: Determine if rebuild is necessary
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
@@ -51,6 +52,7 @@ jobs:
             p1:
               - 'p1/**/*'
 
+      # Only rebuild if base or p1 image has changed
       - name: Build and push p1 Docker image
         if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p1 == 'true'
         uses: docker/build-push-action@v1
@@ -70,8 +72,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Analyze file changes
-        uses: dorny/paths-filter@v2.2.1
+      - name: Determine if rebuild is necessary
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
@@ -80,6 +82,7 @@ jobs:
             p2:
               - 'p2/**/*'
 
+      # Only rebuild if base or p2 image has changed
       - name: Build and push p2 Docker image
         if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p2 == 'true'
         uses: docker/build-push-action@v1
@@ -99,8 +102,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Analyze file changes
-        uses: dorny/paths-filter@v2.2.1
+      - name: Determine if rebuild is necessary
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
@@ -109,6 +112,7 @@ jobs:
             p3:
               - 'p3/**/*'
 
+      # Only rebuild if base or p3 image has changed
       - name: Build and push p3 Docker image
         if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p3 == 'true'
         uses: docker/build-push-action@v1
@@ -128,8 +132,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Analyze file changes
-        uses: dorny/paths-filter@v2.2.1
+      - name: Determine if rebuild is necessary
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
@@ -138,6 +142,7 @@ jobs:
             p4:
               - 'p4/**/*'
 
+      # Only rebuild if base or p4 image has changed
       - name: Build and push p4 Docker image
         if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p4 == 'true'
         uses: docker/build-push-action@v1
@@ -157,8 +162,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Analyze file changes
-        uses: dorny/paths-filter@v2.2.1
+      - name: Determine if rebuild is necessary
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
@@ -167,6 +172,7 @@ jobs:
             p5:
               - 'p5/**/*'
 
+      # Only rebuild if base or p5 image has changed
       - name: Build and push p5 Docker image
         if: steps.filter.outputs.base == 'true' || steps.filter.outputs.p5 == 'true'
         uses: docker/build-push-action@v1
