@@ -1,4 +1,7 @@
-# Upload Docker images when either the base or individual project images change
+# Pipeline for uploading Docker images when either the base or individual project images change.
+#
+# Jad Chaar <jadchaar@umich.edu>
+
 name: upload-ag-images
 
 on:

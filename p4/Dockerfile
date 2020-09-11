@@ -3,9 +3,9 @@ FROM eecs485/ag_base:latest
 
 RUN apt-get install -y netcat
 USER autograder:autograder
-COPY requirements-485-p4.txt .
+COPY requirements.txt .
 RUN $PYTHON -m venv env-p4
-RUN env-p4/bin/pip install -r requirements-485-p4.txt
+RUN env-p4/bin/pip install -r requirements.txt
 USER root:root
 
-RUN rm requirements-485-p4.txt
+RUN rm requirements.txt

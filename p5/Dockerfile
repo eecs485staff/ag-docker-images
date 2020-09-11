@@ -4,9 +4,9 @@ FROM eecs485/ag_base:latest
 RUN apt-get install -y unzip wget
 USER autograder:autograder
 
-COPY requirements-485-p5.txt .
+COPY requirements.txt .
 RUN $PYTHON -m venv env-p5
-RUN env-p5/bin/pip install -r requirements-485-p5.txt
+RUN env-p5/bin/pip install -r requirements.txt
 
 COPY package.json .
 COPY package-lock.json .
@@ -28,4 +28,4 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get update && apt-get install -y google-chrome-stable
 
 RUN rm linux_signing_key.pub
-RUN rm requirements-485-p5.txt
+RUN rm requirements.txt
