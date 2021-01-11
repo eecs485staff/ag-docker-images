@@ -10,6 +10,21 @@ The EECS 485 AG images are publicly hosted on [Docker Hub](https://hub.docker.co
 
 Images are built and uploaded to Docker Hub automatically using a [GitHub actions workflow](https://github.com/eecs485staff/ag-docker-images/actions?query=workflow%3Aupload-ag-images) that will run whenever code is pushed or merged into the master branch. Any change, whether a dependency upgrade or Dockerfile modification, will prompt some or all of the images to be rebuilt and uploaded. Docker Hub uploads are managed by the [eecs485dockerbot](https://hub.docker.com/u/eecs485dockerbot) service user. Sensitive information, like eecs485dockerbot's personal access token, are stored in this [repository's secrets](https://github.com/eecs485staff/ag-docker-images/settings/secrets) for use in the GitHub actions workflow.
 
+## Manually Building Images
+
+When updating the Docker images, it is helpful to build them locally for testing purpose. You can build the images locally with the following commands:
+
+```bash
+$ pwd
+/Users/jadchaar/Development/eecs485/ag-docker-images
+$ docker build base -t eecs485/ag_base:latest # Build and tag the base image
+$ docker build p1 -t eecs485/p1:latest # Build and tag the P1 image
+$ docker build p2 -t eecs485/p2:latest # Build and tag the P2 image
+$ docker build p3 -t eecs485/p3:latest # Build and tag the P3 image
+$ docker build p4 -t eecs485/p4:latest # Build and tag the P4 image
+$ docker build p5 -t eecs485/p5:latest # Build and tag the P5 image
+```
+
 ## Docker Hub Images
 
 - [Base Images](https://hub.docker.com/repository/docker/eecs485/ag_base)
