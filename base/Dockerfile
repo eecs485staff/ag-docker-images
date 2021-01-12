@@ -6,13 +6,10 @@ FROM eecsautograder/ubuntu18:latest
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Detroit
 
-# Install build tools, sqlite, tzdata
+# Install common build tools, sqlite, and tzdata
 RUN apt-get update && apt-get install -y build-essential software-properties-common sqlite3 tzdata
 
-# Install Python
+# Install Python and Java (required by html5validator)
 RUN add-apt-repository ppa:deadsnakes/ppa && apt-get update
 ENV PYTHON python3.9
-RUN apt-get install -y $PYTHON $PYTHON-venv
-
-# Install Java (required by html5validator)
-RUN apt-get install -y openjdk-8-jre
+RUN apt-get install -y $PYTHON $PYTHON-venv openjdk-8-jre
