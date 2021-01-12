@@ -32,6 +32,7 @@ jobs:
         with:
           context: base
           tags: eecs485/ag_base:latest
+          push: true
 
   upload-p1:
     needs: upload-base
@@ -56,6 +57,7 @@ jobs:
         with:
           context: p1
           tags: eecs485/p1:latest
+          push: true
 
   upload-p2:
     needs: upload-base
@@ -80,6 +82,7 @@ jobs:
         with:
           context: p2
           tags: eecs485/p2:latest
+          push: true
 
   upload-p3:
     needs: upload-base
@@ -104,6 +107,7 @@ jobs:
         with:
           context: p3
           tags: eecs485/p3:latest
+          push: true
 
   upload-p4:
     needs: upload-base
@@ -128,6 +132,7 @@ jobs:
         with:
           context: p4
           tags: eecs485/p4:latest
+          push: true
 
   upload-p5:
     needs: upload-base
@@ -152,3 +157,4 @@ jobs:
         with:
           context: p5
           tags: eecs485/p5:latest
+          push: true
