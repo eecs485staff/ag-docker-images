@@ -1,8 +1,6 @@
 # Build base image
 FROM eecsautograder/ubuntu18:latest
 
-USER root:root
-
 # Set ARG and ENV variables required for tzdata installation (required for Python 3.9+)
 # Source: https://serverfault.com/a/1016972
 ARG DEBIAN_FRONTEND=noninteractive
