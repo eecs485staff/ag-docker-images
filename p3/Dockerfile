@@ -1,6 +1,8 @@
 # Build project 3 image
 FROM eecs485/ag_base:latest
 
+USER autograder:autograder
+
 # Install NodeJS LTS
 RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
@@ -26,3 +28,5 @@ RUN npm install .
 RUN npm install chromedriver --detect_chromedriver_version --no-save
 
 RUN rm linux_signing_key.pub requirements.txt package.json package-lock.json
+
+USER root:root
