@@ -25,18 +25,9 @@ COPY package-lock.json .
 RUN npm install .
 
 # Install chromedriver (same major version as Google Chrome)
-RUN echo $(npm bin)
-# RUN npm install chromedriver --detect_chromedriver_version --no-save; cp /home/autograder/working_dir/node_modules/chromedriver/lib/chromedriver/chromedriver /home/autograder/working_dir/env-p3/bin/chromedriver
+# Since internet access is disabled on the autograder, we need to copy
+# the downloaded chromedriver executable to our environment's PATH.
 RUN npm install chromedriver --detect_chromedriver_version --no-save; cp node_modules/chromedriver/lib/chromedriver/chromedriver env-p3/bin/chromedriver
-
-# USER root:root
-# RUN export NPMBIN=$(npm bin); cp $NPMBIN/chromedriver env-p3/bin/
-# COPY node_modules/.bin/chromedriver env-p3/bin/chromedriver
-RUN google-chrome --version
-RUN env-p3/bin/chromedriver --version
-RUN /home/autograder/working_dir/node_modules/.bin/chromedriver --version
-RUN $(npm bin)/chromedriver --version
-RUN npx chromedriver --version
 
 RUN rm linux_signing_key.pub requirements.txt
 
