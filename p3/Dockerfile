@@ -27,6 +27,6 @@ RUN npm install .
 # Install chromedriver (same major version as Google Chrome)
 RUN npm install chromedriver --detect_chromedriver_version --no-save
 
-RUN rm linux_signing_key.pub requirements.txt package.json package-lock.json
+RUN rm linux_signing_key.pub requirements.txt
 
 USER root:root
