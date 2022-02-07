@@ -23,9 +23,7 @@ RUN env-p3/bin/pip install -r requirements.txt
 COPY package.json .
 COPY package-lock.json .
 
-USER root:root
-RUN npm install .
-USER autograder:autograder
+RUN npm ci .
 
 # Install chromedriver (same major version as Google Chrome)
 # Since internet access is disabled on the autograder, we need to copy
