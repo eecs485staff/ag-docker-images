@@ -1,5 +1,5 @@
 # Build base image
-FROM eecsautograder/ubuntu20:latest
+FROM eecsautograder/ubuntu22:latest
 
 # Set ARG and ENV variables required for tzdata installation (required for Python 3.9+)
 # Source: https://serverfault.com/a/1016972
