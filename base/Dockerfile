@@ -6,7 +6,7 @@ FROM eecsautograder/ubuntu22:latest
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Detroit
 
-# Install common build tools, sqlite, tzdata
+# Install common build tools, sqlite, and tzdata
 RUN apt-get update && apt-get install -y build-essential software-properties-common sqlite3 tzdata
 
 # Install Python, Java (required by html5validator), and file (used in tests)
