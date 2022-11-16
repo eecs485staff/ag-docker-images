@@ -17,6 +17,7 @@ USER autograder:autograder
 # Configure Python virtual environment and install Python packages
 COPY requirements.txt .
 RUN $PYTHON -m venv env-p3
+RUN env-p3/bin/pip install --upgrade pip setuptools wheel
 RUN env-p3/bin/pip install -r requirements.txt
 
 # Install NodeJS packages
