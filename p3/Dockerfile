@@ -23,8 +23,10 @@ RUN $PYTHON -m venv env-p3
 RUN env-p3/bin/pip install --upgrade pip setuptools wheel
 RUN env-p3/bin/pip install -r requirements.txt
 
-# set cypress cache folder to avoid permissions error
-RUN echo "export CYPRESS_CACHE_FOLDER=/home/autograder/.cache/Cypress" >> env-p3/bin/activate
+# We enter the container as root, but the Cypress cache is installed as autograder.
+# Setting this environment variable tells Cypress to look for the cache in /home/autograder
+# regardless of which user we are.
+ENV CYPRESS_CACHE_FOLDER=/home/autograder/.cache/Cypress
 
 # Install NodeJS packages
 COPY package.json .
