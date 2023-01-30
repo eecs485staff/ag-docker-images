@@ -6,11 +6,11 @@ RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
 RUN apt-get remove -y curl
 
-# Install Google Chrome
+# Install E2E testing dependencies
 ADD https://dl-ssl.google.com/linux/linux_signing_key.pub .
 RUN apt-key add linux_signing_key.pub
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-RUN apt-get update && apt-get install -y google-chrome-stable
+RUN apt-get update && apt-get install -y google-chrome-stable xvfb
 
 USER autograder:autograder
 
@@ -25,11 +25,6 @@ COPY package.json .
 COPY package-lock.json .
 
 RUN npm ci .
-
-# Install chromedriver (same major version as Google Chrome)
-# Since internet access is disabled on the autograder, we need to copy
-# the downloaded chromedriver executable to our environment's PATH.
-RUN npm install chromedriver --detect_chromedriver_version --no-save; cp node_modules/chromedriver/lib/chromedriver/chromedriver env-p3/bin/chromedriver
 
 RUN rm linux_signing_key.pub requirements.txt
 
