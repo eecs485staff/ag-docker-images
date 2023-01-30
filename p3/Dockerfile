@@ -1,6 +1,9 @@
 # Build project 3 image
 FROM eecs485/ag_base:latest
 
+# install Cypress dependencies
+RUN yes | apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+
 # Install NodeJS LTS
 RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
@@ -19,6 +22,9 @@ COPY requirements.txt .
 RUN $PYTHON -m venv env-p3
 RUN env-p3/bin/pip install --upgrade pip setuptools wheel
 RUN env-p3/bin/pip install -r requirements.txt
+
+# set cypress cache folder to avoid permissions error
+RUN echo "export CYPRESS_CACHE_FOLDER=/home/autograder/.cache/Cypress" >> env-p3/bin/activate
 
 # Install NodeJS packages
 COPY package.json .
