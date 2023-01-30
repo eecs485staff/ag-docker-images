@@ -1,7 +1,7 @@
 # Build project 3 image
 FROM eecs485/ag_base:latest
 
-# install Cypress dependencies
+# Install Cypress dependencies
 RUN apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 
 # Install NodeJS LTS
@@ -23,7 +23,7 @@ RUN $PYTHON -m venv env-p3
 RUN env-p3/bin/pip install --upgrade pip setuptools wheel
 RUN env-p3/bin/pip install -r requirements.txt
 
-# We enter the container as root, but the Cypress cache is installed as autograder.
+# We enter the container as root, but Cypress is installed as autograder.
 # Setting this environment variable tells Cypress to look for the cache in /home/autograder
 # regardless of which user we are.
 ENV CYPRESS_CACHE_FOLDER=/home/autograder/.cache/Cypress
