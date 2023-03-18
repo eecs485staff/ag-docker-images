@@ -11,5 +11,5 @@ RUN apt-get update && apt-get install -y build-essential software-properties-com
 
 # Install Python, Java (required by html5validator), and file (used in tests)
 RUN add-apt-repository ppa:deadsnakes/ppa && apt-get update
-ENV PYTHON python3.10
+ENV PYTHON python3.11
 RUN apt-get install -y $PYTHON $PYTHON-venv openjdk-8-jre file
